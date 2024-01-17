@@ -1,0 +1,103 @@
+Destinations,country,region,Climate,Budget,Activity,Demographics,Duration,Cuisine,History,Natural Wonder,Accommodation,Language
+Tokyo,Japan,East Asia,Temperate,High,Cultural,Solo,Long,Asian,Modern,Mountains,Luxury,Japanese
+Ottawa,Canada,North America,Cold,Medium,Adventure,Family-friendly,Medium,European,Modern,Forests,Mid-range,English
+Mexico City,Mexico,North America,Temperate,Low,Cultural,Senior,Short,Latin American,Ancient,Mountains,Budget,Spanish
+Rome,Italy,Southern Europe,Temperate,High,Cultural,Solo,Medium,European,Ancient,Beaches,Luxury,Italian
+Brasilia,Brazil,South America,Tropical,Low,Adventure,Family-friendly,Long,Latin American,Modern,Beaches,Budget,Portuguese
+Canberra,Australia,Oceania,Temperate,High,Adventure,Family-friendly,Long,Western,Modern,Beaches,Luxury,English
+New Delhi,India,South Asia,Tropical,Low,Cultural,Solo,Long,Asian,Ancient,Mountains,Budget,Hindi
+Pretoria,South Africa,Africa,Temperate,Medium,Adventure,Solo,Medium,African,Modern,Forests,Mid-range,English
+Madrid,Spain,Southern Europe,Temperate,Medium,Cultural,Senior,Short,European,Ancient,Beaches,Mid-range,Spanish
+Moscow,Russia,Eastern Europe,Cold,Low,Cultural,Senior,Long,Eastern European,Medieval,Mountains,Budget,Russian
+Berlin,Germany,Western Europe,Temperate,High,Cultural,Solo,Short,European,Modern,Forests,Luxury,German
+Bangkok,Thailand,Southeast Asia,Tropical,Low,Adventure,Solo,Medium,Asian,Ancient,Beaches,Budget,Thai
+Stockholm,Sweden,Northern Europe,Cold,Medium,Adventure,Family-friendly,Long,European,Medieval,Forests,Mid-range,Swedish
+Cairo,Egypt,North Africa,Desert,Low,Cultural,Senior,Short,Middle Eastern,Ancient,Desert,Budget,Arabic
+Wellington,New Zealand,Oceania,Temperate,High,Adventure,Family-friendly,Long,Western,Modern,Mountains,Luxury,English
+Ankara,Turkey,Eurasia,Temperate,Medium,Cultural,Family-friendly,Medium,Middle Eastern,Ancient,Beaches,Mid-range,Turkish
+Buenos Aires,Argentina,South America,Temperate,Low,Adventure,Solo,Long,Latin American,Modern,Mountains,Budget,Spanish
+Kathmandu,Nepal,South Asia,Cold,Low,Adventure,Solo,Long,Asian,Ancient,Mountains,Budget,Nepali
+Athens,Greece,Southern Europe,Temperate,Medium,Cultural,Senior,Short,European,Ancient,Beaches,Mid-range,Greek
+Nairobi,Kenya,Africa,Tropical,Low,Adventure,Family-friendly,Medium,African,Modern,Forests,Budget,Swahili
+Lisbon,Portugal,Southern Europe,Temperate,Medium,Cultural,Senior,Medium,European,Ancient,Beaches,Mid-range,Portuguese
+Oslo,Norway,Northern Europe,Cold,High,Adventure,Family-friendly,Long,European,Medieval,Mountains,Luxury,Norwegian
+Jakarta,Indonesia,Southeast Asia,Tropical,Low,Adventure,Solo,Long,Asian,Ancient,Beaches,Budget,Indonesian
+Hanoi,Vietnam,Southeast Asia,Tropical,Low,Cultural,Solo,Medium,Asian,Modern,Mountains,Budget,Vietnamese
+Dublin,Ireland,Northern Europe,Temperate,Medium,Cultural,Family-friendly,Short,European,Medieval,Forests,Mid-range,English
+Beijing,China,East Asia,Temperate,Medium,Cultural,Solo,Long,Asian,Ancient,Mountains,Luxury,Mandarin
+Paris,France,Western Europe,Temperate,High,Cultural,Solo,Short,European,Medieval,Beaches,Luxury,French
+Santiago,Chile,South America,Temperate,Medium,Adventure,Family-friendly,Long,Latin American,Modern,Mountains,Mid-range,Spanish
+Rabat,Morocco,North Africa,Desert,Low,Cultural,Senior,Short,Middle Eastern,Ancient,Desert,Budget,Arabic
+Singapore,Singapore,Southeast Asia,Tropical,High,Cultural,Solo,Short,Asian,Modern,Cityscape,Luxury,English
+Lima,Peru,South America,Temperate,Low,Adventure,Solo,Medium,Latin American,Ancient,Mountains,Budget,Spanish
+Helsinki,Finland,Northern Europe,Cold,High,Adventure,Family-friendly,Long,European,Modern,Forests,Luxury,Finnish
+Prague,Czech Republic,Eastern Europe,Temperate,Medium,Cultural,Senior,Short,European,Medieval,Cityscape,Mid-range,Czech
+Manila,Philippines,Southeast Asia,Tropical,Low,Adventure,Family-friendly,Long,Asian,Modern,Beaches,Budget,Filipino
+Brussels,Belgium,Western Europe,Temperate,Medium,Cultural,Solo,Short,European,Medieval,Cityscape,Mid-range,"Dutch, French, German"
+Kuala Lumpur,Malaysia,Southeast Asia,Tropical,Low,Cultural,Solo,Medium,Asian,Modern,Beaches,Budget,Malay
+Amsterdam,Netherlands,Western Europe,Temperate,High,Cultural,Family-friendly,Short,European,Modern,Cityscape,Luxury,Dutch
+Washington D.C.,United States,North America,Varied,High,Adventure,Solo,Long,Western,Modern,Mountains,Luxury,English
+London,United Kingdom,Western Europe,Temperate,High,Cultural,Senior,Short,European,Medieval,Cityscape,Luxury,English
+Seoul,South Korea,East Asia,Temperate,Medium,Cultural,Solo,Medium,Asian,Modern,Mountains,Mid-range,Korean
+Bogota,Colombia,South America,Tropical,Low,Adventure,Family-friendly,Long,Latin American,Modern,Forests,Budget,Spanish
+Warsaw,Poland,Eastern Europe,Temperate,Low,Cultural,Solo,Short,Eastern European,Medieval,Forests,Budget,Polish
+Jerusalem,Israel,Middle East,Desert,High,Cultural,Senior,Short,Middle Eastern,Ancient,Desert,Luxury,Hebrew
+Kyiv,Ukraine,Eastern Europe,Temperate,Low,Cultural,Solo,Medium,Eastern European,Modern,Forests,Budget,Ukrainian
+Vienna,Austria,Western Europe,Temperate,High,Cultural,Senior,Short,European,Medieval,Mountains,Luxury,German
+Copenhagen,Denmark,Northern Europe,Temperate,High,Cultural,Family-friendly,Short,European,Medieval,Beaches,Luxury,Danish
+Dhaka,Bangladesh,South Asia,Tropical,Low,Adventure,Solo,Medium,Asian,Modern,Rivers,Budget,Bengali
+Montevideo,Uruguay,South America,Temperate,Medium,Cultural,Senior,Short,Latin American,Modern,Beaches,Mid-range,Spanish
+Bern,Switzerland,Western Europe,Cold,High,Adventure,Family-friendly,Medium,European,Modern,Mountains,Luxury,"German, French, Italian"
+Islamabad,Pakistan,South Asia,Varied,Low,Cultural,Solo,Long,Asian,Ancient,Mountains,Budget,Urdu
+Budapest,Hungary,Eastern Europe,Temperate,Medium,Cultural,Senior,Short,European,Medieval,Rivers,Mid-range,Hungarian
+Zagreb,Croatia,Southern Europe,Temperate,Medium,Adventure,Family-friendly,Medium,European,Ancient,Beaches,Mid-range,Croatian
+Colombo,Sri Lanka,South Asia,Tropical,Low,Adventure,Solo,Long,Asian,Ancient,Beaches,Budget,"Sinhala, Tamil"
+Tehran,Iran,Middle East,Desert,Low,Cultural,Solo,Medium,Middle Eastern,Ancient,Deserts,Budget,Persian
+Bratislava,Slovakia,Eastern Europe,Temperate,Medium,Adventure,Family-friendly,Short,European,Medieval,Mountains,Mid-range,Slovak
+Cancun,Mexico,North America,Tropical,High,Adventure,Family-friendly,Medium,Latin American,Modern,Beaches,Luxury,Spanish
+Venice,Italy,Southern Europe,Temperate,High,Cultural,Couples,Short,European,Ancient,Cityscape,Luxury,Italian
+Florence,Italy,Southern Europe,Temperate,Medium,Cultural,Solo,Short,European,Ancient,Cityscape,Mid-range,Italian
+Milan,Italy,Southern Europe,Temperate,High,Cultural,Business,Short,European,Medieval,Cityscape,Luxury,Italian
+Saint Petersburg,Russia,Eastern Europe,Cold,Medium,Cultural,Solo,Medium,Eastern European,Medieval,Cityscape,Mid-range,Russian
+Vladivostok,Russia,Eastern Europe,Temperate,Medium,Adventure,Solo,Long,Eastern European,Modern,Forests,Mid-range,Russian
+New York City,United States,North America,Temperate,High,Cultural,Solo,Short,Western,Modern,Cityscape,Luxury,English
+Los Angeles,United States,North America,Temperate,High,Adventure,Family-friendly,Medium,Western,Modern,Beaches,Luxury,English
+Chicago,United States,North America,Temperate,Medium,Cultural,Solo,Short,Western,Modern,Cityscape,Mid-range,English
+Miami,United States,North America,Tropical,High,Adventure,Family-friendly,Short,Latin American,Modern,Beaches,Luxury,"English, Spanish"
+Shiraz,Iran,Middle East,Temperate,Low,Cultural,Solo,Short,Middle Eastern,Ancient,Cityscape,Budget,Persian
+Isfahan,Iran,Middle East,Temperate,Medium,Cultural,Family-friendly,Medium,Middle Eastern,Ancient,Cityscape,Mid-range,Persian
+Mashhad,Iran,Middle East,Cold,Low,Cultural,Solo,Short,Middle Eastern,Ancient,Cityscape,Budget,Persian
+Tabriz,Iran,Middle East,Cold,Medium,Cultural,Solo,Medium,Middle Eastern,Ancient,Mountains,Mid-range,Persian
+Yazd,Iran,Middle East,Desert,Low,Cultural,Solo,Short,Middle Eastern,Ancient,Deserts,Budget,Persian
+Shanghai,China,East Asia,Temperate,High,Cultural,Business,Short,Asian,Modern,Cityscape,Luxury,Mandarin
+Guangzhou,China,East Asia,Temperate,Medium,Cultural,Family-friendly,Medium,Asian,Modern,Rivers,Mid-range,Mandarin
+Chengdu,China,East Asia,Temperate,Low,Cultural,Solo,Short,Asian,Ancient,Mountains,Budget,Mandarin
+Xi'an,China,East Asia,Temperate,Medium,Cultural,Solo,Medium,Asian,Ancient,Cityscape,Mid-range,Mandarin
+Bergen,Norway,Northern Europe,Cold,High,Adventure,Family-friendly,Short,European,Medieval,Fjords,Mid-range,Norwegian
+Tromsø,Norway,Northern Europe,Cold,Medium,Adventure,Solo,Short,European,Modern,Northern Lights,Mid-range,Norwegian
+Marseille,France,Western Europe,Temperate,Medium,Cultural,Family-friendly,Short,European,Ancient,Beaches,Mid-range,French
+Lyon,France,Western Europe,Temperate,Medium,Cultural,Solo,Short,European,Medieval,Cityscape,Mid-range,French
+Sentosa,Singapore,Southeast Asia,Tropical,High,Adventure,Family-friendly,Short,Asian,Modern,Beaches,Luxury,English
+Marina Bay,Singapore,Southeast Asia,Tropical,High,Cultural,Solo,Short,Asian,Modern,Cityscape,Luxury,English
+Cusco,Peru,South America,Temperate,Low,Cultural,Solo,Medium,Latin American,Ancient,Mountains,Budget,Spanish
+Arequipa,Peru,South America,Temperate,Low,Adventure,Solo,Medium,Latin American,Ancient,Volcanoes,Budget,Spanish
+Busan,South Korea,East Asia,Temperate,Medium,Cultural,Family-friendly,Short,Asian,Modern,Beaches,Mid-range,Korean
+Incheon,South Korea,East Asia,Temperate,Medium,Cultural,Solo,Short,Asian,Modern,Cityscape,Mid-range,Korean
+Medellin,Colombia,South America,Tropical,Low,Adventure,Solo,Medium,Latin American,Modern,Mountains,Budget,Spanish
+Cali,Colombia,South America,Tropical,Low,Cultural,Family-friendly,Short,Latin American,Modern,Cityscape,Budget,Spanish
+Lahore,Pakistan,South Asia,Varied,Low,Cultural,Family-friendly,Short,Asian,Ancient,Cityscape,Budget,Urdu
+Karachi,Pakistan,South Asia,Varied,Low,Cultural,Solo,Medium,Asian,Modern,Beaches,Budget,Urdu
+Zurich,Switzerland,Western Europe,Cold,High,Cultural,Business,Short,European,Medieval,Cityscape,Luxury,German
+Geneva,Switzerland,Western Europe,Cold,High,Cultural,Solo,Short,European,Modern,Lakes,Luxury,French
+Izmir,Turkey,Eurasia,Temperate,Low,Cultural,Family-friendly,Short,Middle Eastern,Ancient,Beaches,Budget,Turkish
+Antalya,Turkey,Eurasia,Mediterranean,Medium,Adventure,Solo,Short,Middle Eastern,Ancient,Beaches,Mid-range,Turkish
+Bursa,Turkey,Eurasia,Temperate,Low,Cultural,Solo,Short,Middle Eastern,Ancient,Mountains,Budget,Turkish
+Munich,Germany,Western Europe,Temperate,High,Cultural,Family-friendly,Short,European,Medieval,Cityscape,Luxury,German
+Hamburg,Germany,Western Europe,Temperate,Medium,Cultural,Solo,Short,European,Medieval,Rivers,Mid-range,German
+Frankfurt,Germany,Western Europe,Temperate,High,Business,Business,Short,European,Modern,Cityscape,Luxury,German
+Alexandria,Egypt,North Africa,Desert,Low,Cultural,Family-friendly,Short,Middle Eastern,Ancient,Beaches,Budget,Arabic
+Luxor,Egypt,North Africa,Desert,Low,Cultural,Solo,Short,Middle Eastern,Ancient,Rivers,Budget,Arabic
+Aswan,Egypt,North Africa,Desert,Low,Cultural,Solo,Short,Middle Eastern,Ancient,Rivers,Budget,Arabic
+Christchurch,New Zealand,Oceania,Temperate,Medium,Adventure,Family-friendly,Medium,Western,Modern,Cityscape,Mid-range,English
+Queenstown,New Zealand,Oceania,Temperate,High,Adventure,Solo,Short,Western,Modern,Mountains,Luxury,English
+Rotorua,New Zealand,Oceania,Temperate,Medium,Cultural,Family-friendly,Short,Western,Modern,Geothermal,Mid-range,English
