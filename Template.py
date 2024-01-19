@@ -3,6 +3,7 @@ import tkinter
 import tkinter.messagebox
 from tkintermapview import TkinterMapView
 from pyswip import Prolog
+import pandas as pd
 
 
 class App(tkinter.Tk):
@@ -130,14 +131,45 @@ class App(tkinter.Tk):
 # STEP1: Define the knowledge base of illnesses and their symptoms
 
 prolog = Prolog()
+destinations = pd.read_csv("Destinations.csv")
 
-prolog.retractall("destination(_, _, _, _, _, _, _, _, _, _, _, _, _)")
-prolog.assertz("destination('Tokyo', japan, 'East Asia', temperate, high, cultural, solo, long, asian, modern, mountains, luxury, japanese)")
-prolog.assertz("destination('Ottawa', canada, 'North America', cold, medium, adventure, family_friendly, medium, european, modern, forests, mid_range, english)")
-prolog.assertz("destination('Mexico City', mexico, 'North America', temperate, low, cultural, senior, short, latin_american, ancient, mountains, budget, spanish)")
-prolog.assertz("destination('Rome', italy, 'Southern Europe', temperate, high, cultural, solo, medium, european, ancient, beaches, luxury, italian)")
-prolog.assertz("destination('Brasilia', brazil, 'South America', tropical, low, adventure, family_friendly, long, latin_american, modern, beaches, budget, portuguese)")
+destinations.at[37, "Destinations"] = "Washington DC"
 
+
+# prolog.retractall("destination(_, _, _, _, _, _, _, _, _, _, _, _, _)")
+# prolog.assertz("destination('Tokyo', japan, 'East Asia', temperate, high, cultural, solo, long, asian, modern, mountains, luxury, japanese)")
+# prolog.assertz("destination('Ottawa', canada, 'North America', cold, medium, adventure, family_friendly, medium, european, modern, forests, mid_range, english)")
+# prolog.assertz("destination('Mexico City', mexico, 'North America', temperate, low, cultural, senior, short, latin_american, ancient, mountains, budget, spanish)")
+# prolog.assertz("destination('Rome', italy, 'Southern Europe', temperate, high, cultural, solo, medium, european, ancient, beaches, luxury, italian)")
+# prolog.assertz("destination('Brasilia', brazil, 'South America', tropical, low, adventure, family_friendly, long, latin_american, modern, beaches, budget, portuguese)")
+
+query = "destination(City, _, _, _, low, _, _, _, _, _, _, _, _)"
+results = list(prolog.query(query))
+for result in results:
+    print(result)
+
+
+arg = "destination("
+
+for dest in destinations.iterrows():
+    arg = "destination("
+    for prop in range(13):
+        phrase = dest[1].iloc[prop]
+        if " " in phrase:
+            phrase = phrase.replace(" ", "_")
+        elif "'" in phrase:
+            phrase = phrase.replace("'", "_")
+
+        if prop == 12:
+            arg += phrase
+            continue
+        else:
+            arg += phrase + ", "
+    arg += ")"
+    prolog.assertz(arg)
+results = list(prolog.query("destination(City, _, _, _, low, _, _, _, _, _, _, _, _)"))
+for result in results:
+    print(result["City"])
 
 
 # TODO 2: extract unique features from the Destinations.csv and save them in a dictionary
