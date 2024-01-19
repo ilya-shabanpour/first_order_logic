@@ -133,7 +133,39 @@ class App(tkinter.Tk):
 prolog = Prolog()
 destinations = pd.read_csv("Destinations.csv")
 
-destinations.at[37, "Destinations"] = "Washington DC"
+prolog.retractall("climate(_,_)")
+prolog.retractall("budget(_,_)")
+prolog.retractall("activity(_,_)")
+prolog.retractall("demographic(_,_)")
+prolog.retractall("duration(_,_)")
+prolog.retractall("cuisine(_,_)")
+prolog.retractall("history(_,_)")
+prolog.retractall("natural_wonder(_,_)")
+prolog.retractall("accommodation(_,_)")
+prolog.retractall("language(_,_)")
+prolog.retractall("region(_,_)")
+prolog.retractall("my_destination(_)")
+prolog.retractall("country(_,_)")
+
+
+
+
+
+prolog.assertz("my_destination(_)")
+prolog.assertz("country(_,_)")
+prolog.assertz("climate(_,_)")
+prolog.assertz("budget(_,_)")
+prolog.assertz("activity(_,_)")
+prolog.assertz("demographic(_,_)")
+prolog.assertz("duration(_,_)")
+prolog.assertz("cuisine(_,_)")
+prolog.assertz("history(_,_)")
+prolog.assertz("natural_wonder(_,_)")
+prolog.assertz("accommodation(_,_)")
+prolog.assertz("language(_,_)")
+prolog.assertz("region(_,_)")
+
+
 
 
 # prolog.retractall("destination(_, _, _, _, _, _, _, _, _, _, _, _, _)")
@@ -142,34 +174,11 @@ destinations.at[37, "Destinations"] = "Washington DC"
 # prolog.assertz("destination('Mexico City', mexico, 'North America', temperate, low, cultural, senior, short, latin_american, ancient, mountains, budget, spanish)")
 # prolog.assertz("destination('Rome', italy, 'Southern Europe', temperate, high, cultural, solo, medium, european, ancient, beaches, luxury, italian)")
 # prolog.assertz("destination('Brasilia', brazil, 'South America', tropical, low, adventure, family_friendly, long, latin_american, modern, beaches, budget, portuguese)")
+# query = "destination(City, _, _, _, low, _, _, _, _, _, _, _, _)"
+# results = list(prolog.query(query))
+# for result in results:
+#     print(result)
 
-query = "destination(City, _, _, _, low, _, _, _, _, _, _, _, _)"
-results = list(prolog.query(query))
-for result in results:
-    print(result)
-
-
-arg = "destination("
-
-for dest in destinations.iterrows():
-    arg = "destination("
-    for prop in range(13):
-        phrase = dest[1].iloc[prop]
-        if " " in phrase:
-            phrase = phrase.replace(" ", "_")
-        elif "'" in phrase:
-            phrase = phrase.replace("'", "_")
-
-        if prop == 12:
-            arg += phrase
-            continue
-        else:
-            arg += phrase + ", "
-    arg += ")"
-    prolog.assertz(arg)
-results = list(prolog.query("destination(City, _, _, _, low, _, _, _, _, _, _, _, _)"))
-for result in results:
-    print(result["City"])
 
 
 # TODO 2: extract unique features from the Destinations.csv and save them in a dictionary
