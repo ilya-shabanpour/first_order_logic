@@ -4,6 +4,7 @@ import tkinter.messagebox
 from tkintermapview import TkinterMapView
 from pyswip import Prolog
 import pandas as pd
+import spacy
 
 
 class App(tkinter.Tk):
@@ -119,6 +120,20 @@ class App(tkinter.Tk):
         """Extract locations from text. A placeholder for more complex logic."""
         # Placeholder: Assuming each line in the text contains a single location name
         # TODO 3: extract key features from user's description of destinations
+
+        words = text.split()
+        key_features = {}
+        for word in words:
+            for key, value in unique_features.items():
+                for feature in value:
+                    if word == feature.lower():
+                        key_features[key] = word
+
+
+        print(key_features)
+
+
+
         ################################################################################################
 
         return [line.strip() for line in text.split('\n') if line.strip()]
@@ -126,12 +141,21 @@ class App(tkinter.Tk):
     def start(self):
         self.mainloop()
 
-# TODO 1: read destinations' descriptions from Destinations.csv and add them to the prolog knowledge base
+# 1: read destinations' descriptions from Destinations.csv and add them to the prolog knowledge base
 ################################################################################################
 # STEP1: Define the knowledge base of illnesses and their symptoms
 
 prolog = Prolog()
 destinations = pd.read_csv("Destinations.csv")
+
+# for row_num in range(103):
+#     if " " in destinations.iloc[row_num]['Destinations']:
+
+destinations.replace(' ', '_', regex=True, inplace=True)
+
+
+destinations.at[37, "Destinations"] = "Washington DC"
+destinations.at[73, "Destinations"] = "Xi_an"
 
 prolog.retractall("climate(_,_)")
 prolog.retractall("budget(_,_)")
@@ -148,41 +172,67 @@ prolog.retractall("my_destination(_)")
 prolog.retractall("country(_,_)")
 
 
+for row in destinations.iterrows():
+    city = row[1]["Destinations"].lower()
+    country = row[1]["country"].lower()
+    region = row[1]["region"].lower()
+    climate = row[1]["Climate"].lower()
+    budget = row[1]["Budget"].lower()
+    activity = row[1]["Activity"].lower()
+    demographic = row[1]["Demographics"].lower()
+    duration = row[1]["Duration"].lower()
+    cuisine = row[1]["Cuisine"].lower()
+    history = row[1]["History"].lower()
+    natural_wonder = row[1]["Natural Wonder"].lower()
+    accommodation = row[1]["Accommodation"].lower()
+    language = row[1]["Language"].lower()
 
 
+    prolog.assertz(f"my_destination('{city}')")
+    prolog.assertz(f"country('{city}', '{country}')")
+    prolog.assertz(f"region('{city}', '{region}')")
+    prolog.assertz(f"climate('{city}', '{climate}')")
+    prolog.assertz(f"budget('{city}', '{budget}')")
+    prolog.assertz(f"activity('{city}', '{activity}')")
+    prolog.assertz(f"demographic('{city}', '{demographic}')")
+    prolog.assertz(f"duration('{city}', '{duration}')")
+    prolog.assertz(f"cuisine('{city}', '{cuisine}')")
+    prolog.assertz(f"history('{city}', '{history}')")
+    prolog.assertz(f"natural_wonder('{city}', '{natural_wonder}')")
+    prolog.assertz(f"accommodation('{city}', '{accommodation}')")
+    prolog.assertz(f"language('{city}', '{language}')")
 
-prolog.assertz("my_destination(_)")
-prolog.assertz("country(_,_)")
-prolog.assertz("climate(_,_)")
-prolog.assertz("budget(_,_)")
-prolog.assertz("activity(_,_)")
-prolog.assertz("demographic(_,_)")
-prolog.assertz("duration(_,_)")
-prolog.assertz("cuisine(_,_)")
-prolog.assertz("history(_,_)")
-prolog.assertz("natural_wonder(_,_)")
-prolog.assertz("accommodation(_,_)")
-prolog.assertz("language(_,_)")
-prolog.assertz("region(_,_)")
-
-
-
-
-# prolog.retractall("destination(_, _, _, _, _, _, _, _, _, _, _, _, _)")
-# prolog.assertz("destination('Tokyo', japan, 'East Asia', temperate, high, cultural, solo, long, asian, modern, mountains, luxury, japanese)")
-# prolog.assertz("destination('Ottawa', canada, 'North America', cold, medium, adventure, family_friendly, medium, european, modern, forests, mid_range, english)")
-# prolog.assertz("destination('Mexico City', mexico, 'North America', temperate, low, cultural, senior, short, latin_american, ancient, mountains, budget, spanish)")
-# prolog.assertz("destination('Rome', italy, 'Southern Europe', temperate, high, cultural, solo, medium, european, ancient, beaches, luxury, italian)")
-# prolog.assertz("destination('Brasilia', brazil, 'South America', tropical, low, adventure, family_friendly, long, latin_american, modern, beaches, budget, portuguese)")
-# query = "destination(City, _, _, _, low, _, _, _, _, _, _, _, _)"
+# query = "cuisine(City, asian)"
 # results = list(prolog.query(query))
 # for result in results:
-#     print(result)
+#     current_city = result["City"]
+#     if len(list(prolog.query(f"budget('{current_city}', low)"))) != 0:
+#         print(current_city)
 
 
 
 # TODO 2: extract unique features from the Destinations.csv and save them in a dictionary
 ################################################################################################
+
+cities = destinations["Destinations"].unique()
+countries = destinations["country"].unique()
+regions = destinations["region"].unique()
+climates = destinations["Climate"].unique()
+budgets = destinations["Budget"].unique()
+activities = destinations["Activity"].unique()
+demographics = destinations["Demographics"].unique()
+cuisines = destinations["Cuisine"].unique()
+histories = destinations["History"].unique()
+natural_wonder = destinations["Natural Wonder"].unique()
+accommodation = destinations["Accommodation"].unique()
+language = destinations["Language"].unique()
+
+unique_features = {"cities": cities, "countries": countries, "regions": regions, "climates": climates,
+                 "budgets": budgets, "activities": activities, "demographics": demographics,
+                 "cuisines": cuisines, "histories": histories, "natural_wonder": natural_wonder,
+                 "accommodation": accommodation, "language": language}
+
+print(unique_features)
 
 
 if __name__ == "__main__":
