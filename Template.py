@@ -4,7 +4,6 @@ import tkinter.messagebox
 from tkintermapview import TkinterMapView
 from pyswip import Prolog
 import pandas as pd
-import spacy
 
 
 class App(tkinter.Tk):
@@ -64,34 +63,91 @@ class App(tkinter.Tk):
 
         self.marker_list = []  # Keeping track of markers
 
+
+    def graph(self, prolog_graph, results):
+        adj_matrix = pd.read_csv("Adjacency_matrix.csv")
+
+        adj_matrix.at[37, "Destinations"] = "Washington_DC"
+        adj_matrix.at[73, "Destinations"] = "Xi_an"
+        adj_matrix.rename(columns={"Washington D.C.": "Washington_DC"}, inplace=True)
+        adj_matrix.rename(columns={"Xi'an": "Xi_an"}, inplace=True)
+
+        adj_matrix.replace(' ', '_', regex=True, inplace=True)
+        adj_matrix.columns = adj_matrix.columns.str.replace(' ', '_')
+
+        prolog_graph.retractall("directly_connected(_,_)")
+        prolog_graph.retractall("connected(_,_)")
+
+        for index, row in adj_matrix.iterrows():
+            dest = row["Destinations"].lower()
+            if dest in results:
+                columns = list(adj_matrix.columns[row == 1])
+                for column in columns:
+                    column = column.lower()
+                    prolog_graph.assertz(f"directly_connected('{dest}', '{column}')")
+
+        prolog_graph.assertz("connected(X, Y) :- directly_connected(X, Y)")
+        prolog_graph.assertz("connected(X, Y) :- directly_connected(Y, X)")
+        prolog_graph.assertz("connected(X, Y) :- directly_connected(X, Z), connected(Z, Y)")
+
+
     def check_connections(self, results):
-        print('result2 ', results)
-        locations = []
-        for result in results:
-            city  = result["City"]
-            locations.append(city)
-            # TODO 5: create the knowledgebase of the city and its connected destinations using Adjacency_matrix.csv
+        self.graph(prolog, results)
+
+        for location in results:
+            connected_cities = list(prolog.query(f"connected('{location}', X)"))
+            for city in connected_cities:
+                print(city["X"])
 
 
-        return locations
+        return results
 
     def process_text(self):
         """Extract locations from the text area and mark them on the map."""
         text = self.text_area.get("1.0", "end-1c")  # Get text from text area
-        locations = self.extract_locations(text)  # Extract locations (you may use a more complex method here)
+        extracted_features = self.extract_locations(text)  # Extract locations (you may use a more complex method here)
 
 
-        # TODO 4: create the query based on the extracted features of user desciption 
-        ################################################################################################
-        query = "destination(City,_, _, _, low, _, _, _, _, _, _, _, _)"
-        results = list(prolog.query(query))
-        print(results)
-        locations = self.check_connections(results)
-        # TODO 6: if the number of destinations is less than 6 mark and connect them 
-        ################################################################################################
+        # TODO 4: create the query based on the extracted features of user description
+        if len(extracted_features) == 0:
+            tkinter.Tk().withdraw()
+            tkinter.messagebox.showerror("Error", "We didn't find any specific tour!\n"
+                                                  "Please describe your destination more detailed.")
+            return
+
+
+        result_list = []
+        for key, value in extracted_features.items():
+            query = f"{key}(City, '{value}')"
+            result = list(prolog.query(query))
+            temp_list = []
+            for val in result:
+                temp_list.append(val["City"])
+            result_list.append(temp_list)
+        if len(result_list) > 1:
+            locations = set(result_list[0]).intersection(*result_list[1:])
+        else:
+            locations = result_list[0]
         print(locations)
-        locations = ['mexico_city','rome' ,'brasilia']
-        self.mark_locations(locations)
+
+        if len(locations) == 0:
+            tkinter.Tk().withdraw()
+            tkinter.messagebox.showerror("Error", "We didn't find any specific tour with your description!")
+            return
+        locations = list(locations)
+
+        ################################################################################################
+        locations = self.check_connections(locations)
+        # TODO 6: if the number of destinations is less than 6 mark and connect them
+        ################################################################################################
+
+        if len(locations) > 5:
+            tkinter.Tk().withdraw()
+            tkinter.messagebox.showerror("Error", "We didn't find any specific tour!\n"
+                                                  "Please describe your destination more detailed.")
+        else:
+            print(locations)
+            self.mark_locations(locations)
 
     def mark_locations(self, locations):
         """Mark extracted locations on the map."""
@@ -104,7 +160,7 @@ class App(tkinter.Tk):
 
 
     def connect_marker(self):
-        print(self.marker_list)
+        # print(self.marker_list)
         position_list = []
 
         for marker in self.marker_list:
@@ -120,7 +176,9 @@ class App(tkinter.Tk):
         """Extract locations from text. A placeholder for more complex logic."""
         # Placeholder: Assuming each line in the text contains a single location name
         # TODO 3: extract key features from user's description of destinations
+        ################################################################################################
 
+        text = text.lower()
         words = text.split()
         key_features = {}
         for word in words:
@@ -130,13 +188,11 @@ class App(tkinter.Tk):
                         key_features[key] = word
 
 
-        print(key_features)
+        return key_features
 
 
 
-        ################################################################################################
-
-        return [line.strip() for line in text.split('\n') if line.strip()]
+        # return [line.strip() for line in text.split('\n') if line.strip()]
 
     def start(self):
         self.mainloop()
@@ -151,11 +207,11 @@ destinations = pd.read_csv("Destinations.csv")
 # for row_num in range(103):
 #     if " " in destinations.iloc[row_num]['Destinations']:
 
-destinations.replace(' ', '_', regex=True, inplace=True)
-
-
 destinations.at[37, "Destinations"] = "Washington DC"
 destinations.at[73, "Destinations"] = "Xi_an"
+
+destinations.replace(' ', '_', regex=True, inplace=True)
+destinations.replace("Budget", "low-range", regex=True, inplace=True)
 
 prolog.retractall("climate(_,_)")
 prolog.retractall("budget(_,_)")
@@ -221,18 +277,17 @@ climates = destinations["Climate"].unique()
 budgets = destinations["Budget"].unique()
 activities = destinations["Activity"].unique()
 demographics = destinations["Demographics"].unique()
+durations = destinations["Duration"].unique()
 cuisines = destinations["Cuisine"].unique()
 histories = destinations["History"].unique()
 natural_wonder = destinations["Natural Wonder"].unique()
 accommodation = destinations["Accommodation"].unique()
 language = destinations["Language"].unique()
 
-unique_features = {"cities": cities, "countries": countries, "regions": regions, "climates": climates,
-                 "budgets": budgets, "activities": activities, "demographics": demographics,
-                 "cuisines": cuisines, "histories": histories, "natural_wonder": natural_wonder,
+unique_features = {"my_destination": cities, "country": countries, "region": regions, "climate": climates,
+                 "budget": budgets, "activity": activities, "demographic": demographics, "duration": durations,
+                 "cuisine": cuisines, "history": histories, "natural_wonder": natural_wonder,
                  "accommodation": accommodation, "language": language}
-
-print(unique_features)
 
 
 if __name__ == "__main__":
