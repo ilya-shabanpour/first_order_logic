@@ -107,22 +107,14 @@ class App(tkinter.Tk):
                 cities_connected_to_first = list(prolog.query(f"connected('{city_to_check}', X)"))
 
                 condition = False
-                long_path = False
                 for c in cities_connected_to_first:
                     if c["X"] in cities_left:
                         condition = True
                         curr_path.append(c["X"])
                         cities_left.remove(c["X"])
                         city_to_check = c["X"]
-                        if len(curr_path) == 5:
-                            paths.append(curr_path.copy())
-                            long_path = True
-                            break
                         paths.append(curr_path.copy())
                         break
-
-                if long_path:
-                    break
 
                 if condition:
                     continue
@@ -137,17 +129,11 @@ class App(tkinter.Tk):
                             curr_path.append(c2["X"])
                             cities_left.remove(c2["X"])
                             city_to_check = c2["X"]
-                            if len(curr_path) == 5:
-                                paths.append(curr_path.copy())
-                                long_path = True
-                                break
                             paths.append(curr_path.copy())
                             break
                     if condition:
                         break
 
-                if long_path:
-                    break
                 if not condition:
                     break
 
@@ -160,8 +146,6 @@ class App(tkinter.Tk):
         best_path = []
 
         for path in paths:
-            if len(path) > 5:
-                continue
             current_matches = sum(element in results for element in path)
             if current_matches == max_matches:
                 best_path.append(path)
