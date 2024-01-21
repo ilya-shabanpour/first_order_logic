@@ -195,7 +195,6 @@ class App(tkinter.Tk):
 
         ################################################################################################
         locations = self.check_connections(locations)
-        print(locations)
         # TODO 6: if the number of destinations is less than 6 mark and connect them
         ################################################################################################
 
