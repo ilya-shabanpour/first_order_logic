@@ -78,7 +78,7 @@ class App(tkinter.Tk):
 
                     for i, r in adj_matrix.iterrows():  # second level neighbors
                         dest2 = r["Destinations"].lower()
-                        if dest == result:
+                        if dest2 == column:
                             cols = list(adj_matrix.columns[r == 1])
                             for col in cols:
                                 col = col.lower()
@@ -96,12 +96,86 @@ class App(tkinter.Tk):
         for location in results:
             self.graph(prolog, location)
 
-        connected_cities = list(prolog.query(f"connected('{location}', X)"))
-        print(connected_cities)
-        for city in connected_cities:
-            print(city["X"])
+        paths = []
+        for location in results:
+            city_to_check = location
+            curr_path = [location]
+            cities_left = results.copy()
+            cities_left.remove(location)
+            paths.append([location])
+            while len(cities_left) != 0:
+                cities_connected_to_first = list(prolog.query(f"connected('{city_to_check}', X)"))
 
-        return results
+                condition = False
+                long_path = False
+                for c in cities_connected_to_first:
+                    if c["X"] in cities_left:
+                        condition = True
+                        curr_path.append(c["X"])
+                        cities_left.remove(c["X"])
+                        city_to_check = c["X"]
+                        if len(curr_path) == 5:
+                            paths.append(curr_path.copy())
+                            long_path = True
+                            break
+                        paths.append(curr_path.copy())
+                        break
+
+                if long_path:
+                    break
+
+                if condition:
+                    continue
+
+                for c in cities_connected_to_first:
+                    city_to_check = c["X"]
+                    cities_connected = list(prolog.query(f"connected('{city_to_check}', X)"))
+                    for c2 in cities_connected:
+                        if c2["X"] in cities_left:
+                            condition = True
+                            curr_path.append(c["X"])
+                            curr_path.append(c2["X"])
+                            cities_left.remove(c2["X"])
+                            city_to_check = c2["X"]
+                            if len(curr_path) == 5:
+                                paths.append(curr_path.copy())
+                                long_path = True
+                                break
+                            paths.append(curr_path.copy())
+                            break
+                    if condition:
+                        break
+
+                if long_path:
+                    break
+                if not condition:
+                    break
+
+        best_path = self.find_best_path(paths, results)
+
+        return best_path
+
+    def find_best_path(self, paths, results):
+        max_matches = 0
+        best_path = []
+
+        for path in paths:
+            if len(path) > 5:
+                continue
+            current_matches = sum(element in results for element in path)
+            if current_matches == max_matches:
+                best_path.append(path)
+            elif current_matches > max_matches:
+                best_path = [path]
+
+        min_len = 1000
+        short_path = None
+        for path in best_path:
+            if len(path) < min_len:
+                min_len = len(path)
+                short_path = path
+
+        return short_path
 
     def process_text(self):
         """Extract locations from the text area and mark them on the map."""
@@ -137,6 +211,7 @@ class App(tkinter.Tk):
 
         ################################################################################################
         locations = self.check_connections(locations)
+        print(locations)
         # TODO 6: if the number of destinations is less than 6 mark and connect them
         ################################################################################################
 
