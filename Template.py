@@ -9,7 +9,7 @@ import pandas as pd
 class App(tkinter.Tk):
     APP_NAME = "map_view_demo.py"
     WIDTH = 800
-    HEIGHT = 750  # This is now the initial size, not fixed.
+    HEIGHT = 1100  # This is now the initial size, not fixed. 750
 
     def __init__(self, *args, **kwargs):
         tkinter.Tk.__init__(self, *args, **kwargs)
@@ -88,8 +88,6 @@ class App(tkinter.Tk):
 
         prolog.assertz("connected(X, Y) :- directly_connected(X, Y)")
         prolog.assertz("connected(X, Y) :- directly_connected(Y, X)")
-        # prolog.assertz("not_equal(X, Y) :- \\+ (X == Y)")
-        # prolog.assertz("connected(X, Y) :- directly_connected(X, Z), connected(Z, Y)")
 
     def check_connections(self, results):
 
@@ -166,7 +164,8 @@ class App(tkinter.Tk):
         text = self.text_area.get("1.0", "end-1c")  # Get text from text area
         extracted_features = self.extract_locations(text)  # Extract locations (you may use a more complex method here)
 
-        # TODO 4: create the query based on the extracted features of user description
+        # 4: create the query based on the extracted features of user description
+
         if len(extracted_features) == 0:
             tkinter.Tk().withdraw()
             tkinter.messagebox.showerror("Error", "We didn't find any specific tour!\n"
@@ -193,10 +192,8 @@ class App(tkinter.Tk):
             return
         locations = list(locations)
 
-        ################################################################################################
         locations = self.check_connections(locations)
-        # TODO 6: if the number of destinations is less than 6 mark and connect them
-        ################################################################################################
+        # 6: if the number of destinations is less than 6 mark and connect them
 
         if len(locations) > 5:
             tkinter.Tk().withdraw()
@@ -229,10 +226,8 @@ class App(tkinter.Tk):
             self.marker_path = self.map_widget.set_path(position_list)
 
     def extract_locations(self, text):
-        """Extract locations from text. A placeholder for more complex logic."""
-        # Placeholder: Assuming each line in the text contains a single location name
-        # TODO 3: extract key features from user's description of destinations
-        ################################################################################################
+
+        # 3: extract key features from user's description of destinations
 
         text = text.lower()
         words = text.split()
@@ -245,15 +240,12 @@ class App(tkinter.Tk):
 
         return key_features
 
-        # return [line.strip() for line in text.split('\n') if line.strip()]
 
     def start(self):
         self.mainloop()
 
 
 # 1: read destinations' descriptions from Destinations.csv and add them to the prolog knowledge base
-################################################################################################
-# STEP1: Define the knowledge base of illnesses and their symptoms
 
 prolog = Prolog()
 
@@ -268,9 +260,6 @@ adj_matrix.replace(' ', '_', regex=True, inplace=True)
 adj_matrix.columns = adj_matrix.columns.str.replace(' ', '_')
 
 destinations = pd.read_csv("Destinations.csv")
-
-# for row_num in range(103):
-#     if " " in destinations.iloc[row_num]['Destinations']:
 
 destinations.at[37, "Destinations"] = "Washington DC"
 destinations.at[73, "Destinations"] = "Xi_an"
@@ -321,16 +310,8 @@ for row in destinations.iterrows():
     prolog.assertz(f"accommodation('{city}', '{accommodation}')")
     prolog.assertz(f"language('{city}', '{language}')")
 
-# query = "cuisine(City, asian)"
-# results = list(prolog.query(query))
-# for result in results:
-#     current_city = result["City"]
-#     if len(list(prolog.query(f"budget('{current_city}', low)"))) != 0:
-#         print(current_city)
 
-
-# TODO 2: extract unique features from the Destinations.csv and save them in a dictionary
-################################################################################################
+# 2: extract unique features from the Destinations.csv and save them in a dictionary
 
 cities = destinations["Destinations"].unique()
 countries = destinations["country"].unique()
@@ -346,8 +327,9 @@ natural_wonder = destinations["Natural Wonder"].unique()
 accommodation = destinations["Accommodation"].unique()
 language = destinations["Language"].unique()
 
-unique_features = {"my_destination": cities, "country": countries, "region": regions, "climate": climates,
-                   "budget": budgets, "activity": activities, "demographic": demographics, "duration": durations,
+unique_features = {"my_destination": cities, "country": countries, "region": regions,
+                   "climate": climates,"budget": budgets, "activity": activities,
+                   "demographic": demographics, "duration": durations,
                    "cuisine": cuisines, "history": histories, "natural_wonder": natural_wonder,
                    "accommodation": accommodation, "language": language}
 
