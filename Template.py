@@ -64,10 +64,6 @@ class App(tkinter.Tk):
 
     def graph(self, prolog, result):
 
-        prolog.retractall("directly_connected(_,_)")
-        prolog.retractall("connected(_,_)")
-        prolog.retractall("strings_not_equal(_,_)")
-
         for index, row in adj_matrix.iterrows():
             dest = row["Destinations"].lower()
             if dest == result:
@@ -90,6 +86,8 @@ class App(tkinter.Tk):
         prolog.assertz("connected(X, Y) :- directly_connected(Y, X)")
 
     def check_connections(self, results):
+        prolog.retractall("directly_connected(_,_)")
+        prolog.retractall("connected(_,_)")
 
         for location in results:
             self.graph(prolog, location)
@@ -102,7 +100,7 @@ class App(tkinter.Tk):
             cities_left.remove(location)
             paths.append([location])
             while len(cities_left) != 0:
-                cities_connected_to_first = list(prolog.query(f"connected('{city_to_check}', X)"))
+                cities_connected_to_first = list(prolog.query(f"connected({city_to_check}, X)"))
 
                 condition = False
                 for c in cities_connected_to_first:
@@ -119,7 +117,7 @@ class App(tkinter.Tk):
 
                 for c in cities_connected_to_first:
                     city_to_check = c["X"]
-                    cities_connected = list(prolog.query(f"connected('{city_to_check}', X)"))
+                    cities_connected = list(prolog.query(f"connected({city_to_check}, X)"))
                     for c2 in cities_connected:
                         if c2["X"] in cities_left:
                             condition = True
@@ -149,6 +147,7 @@ class App(tkinter.Tk):
                 best_path.append(path)
             elif current_matches > max_matches:
                 best_path = [path]
+                max_matches = current_matches
 
         min_len = 1000
         short_path = None
@@ -193,6 +192,8 @@ class App(tkinter.Tk):
         locations = list(locations)
 
         locations = self.check_connections(locations)
+        print(locations)
+
         # 6: if the number of destinations is less than 6 mark and connect them
 
         if len(locations) > 5:
@@ -200,7 +201,6 @@ class App(tkinter.Tk):
             tkinter.messagebox.showerror("Error", "We didn't find any specific tour!\n"
                                                   "Please describe your destination more detailed.")
         else:
-            print(locations)
             self.mark_locations(locations)
 
     def mark_locations(self, locations):
@@ -226,10 +226,12 @@ class App(tkinter.Tk):
             self.marker_path = self.map_widget.set_path(position_list)
 
     def extract_locations(self, text):
-
         # 3: extract key features from user's description of destinations
 
         text = text.lower()
+        text = text.replace(".", " ")
+        text = text.replace(",", " ")
+        text = text.replace("/", " ")
         words = text.split()
         key_features = {}
         for word in words:
