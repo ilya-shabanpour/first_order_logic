@@ -127,6 +127,22 @@ class App(tkinter.Tk):
                             city_to_check = c2["X"]
                             paths.append(curr_path.copy())
                             break
+                        else:
+                            city_second = c2["X"]
+                            cities_connected_to_second = list(prolog.query(f"connected({city_second}, X)"))
+                            for c3 in cities_connected_to_second:
+                                if c3["X"] in cities_left:
+                                    condition = True
+                                    curr_path.append(c["X"])
+                                    curr_path.append(c2["X"])
+                                    curr_path.append(c3["X"])
+                                    cities_left.remove(c3["X"])
+                                    city_to_check = c3["X"]
+                                    paths.append(curr_path.copy())
+                                    break
+                        if condition:
+                            break
+
                     if condition:
                         break
 
