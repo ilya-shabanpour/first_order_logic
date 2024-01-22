@@ -1,0 +1,59 @@
+Input:
+As a solo traveler with a passion for ancient cultures, I'm eager to immerse myself in the rich heritage of the Persian language. My journey is not just about sightseeing but delving deep into the linguistic roots of one of the world's oldest languages. Traveling alone will allow me the freedom to explore at my own pace, meet local speakers, and gain a firsthand understanding of the nuances of Persian in its native setting.
+
+1st query:
+['Tehran', 'Shiraz', 'Mashhad', 'Tabriz', 'Yazd']
+
+Graphs:
+Tehran
+         Hanoi   ['Moscow', 'Jerusalem', 'Cusco', 'Queenstown']
+         Beijing         ['Brasilia', 'Jerusalem', 'Chicago', 'Shanghai', 'Marina Bay', 'Frankfurt']
+         Cancun          ['Stockholm', 'Bogota', 'Warsaw', 'Shiraz', 'Yazd', 'Lyon', 'Zurich', 'Bursa']
+         Medellin        ['Bangkok', 'Santiago', 'Washington D.C.', 'Saint Petersburg', 'Isfahan', 'Arequipa']
+         Luxor   ['Canberra', 'Vienna', 'Venice', 'Saint Petersburg', 'Shiraz']
+Shiraz
+         Mexico City     ['Milan', 'New York City', 'Chengdu', 'Bergen', 'Lahore']
+         Lima    ['Copenhagen', 'Colombo', 'Milan', 'Isfahan']
+         Washington D.C.         ['Rome', 'Canberra', 'Bangkok', 'Jerusalem', 'Venice', 'Medellin', 'Alexandria', 'Christchurch']
+         Jerusalem       ['Bangkok', 'Hanoi', 'Beijing', 'Washington D.C.', 'Montevideo', 'Arequipa', 'Zurich', 'Antalya']
+         Cancun          ['Stockholm', 'Bogota', 'Warsaw', 'Tehran', 'Yazd', 'Lyon', 'Zurich', 'Bursa']
+         Luxor   ['Canberra', 'Vienna', 'Tehran', 'Venice', 'Saint Petersburg']
+Isfahan
+         New Delhi       ['Wellington', 'Athens', 'Santiago', 'Singapore', 'Tromsø', 'Karachi']
+         Pretoria        ['Santiago', 'Florence', 'Milan', 'Zurich']
+         Lima    ['Copenhagen', 'Colombo', 'Milan', 'Shiraz']
+         Bergen          ['Mexico City', 'Santiago', 'Montevideo', 'Saint Petersburg']
+         Medellin        ['Bangkok', 'Santiago', 'Washington D.C.', 'Tehran', 'Saint Petersburg', 'Arequipa']
+Mashhad
+         Madrid          ['Montevideo', 'Islamabad', 'Budapest', 'Tabriz', 'Chengdu', 'Arequipa', 'Hamburg', 'Alexandria']
+         Berlin          ['Warsaw', 'Budapest', 'Florence', 'Vladivostok', 'Chicago', 'Lahore', 'Aswan']
+         Helsinki        ['Oslo', 'Paris', 'Prague', 'Manila', 'Seoul', 'Munich', 'Frankfurt']
+         Florence        ['Canberra', 'Pretoria', 'Berlin', 'Islamabad']
+         Tromsø          ['New Delhi', 'Oslo', 'Jakarta', 'Kuala Lumpur', 'Chengdu']
+         Sentosa         ['Budapest', 'Lyon', 'Rotorua']
+Tabriz
+         Madrid          ['Montevideo', 'Islamabad', 'Budapest', 'Mashhad', 'Chengdu', 'Arequipa', 'Hamburg', 'Alexandria']
+         Stockholm       ['Lisbon', 'Seoul', 'Cancun', 'Vladivostok']
+         Lisbon          ['Rome', 'Stockholm', 'Kathmandu']
+         Dublin          ['Ottawa', 'Ankara', 'Bogota', 'Incheon']
+         Bratislava      ['Warsaw', 'Vienna', 'Zagreb', 'Karachi', 'Zurich', 'Izmir']
+         Rotorua         ['Islamabad', 'New York City', 'Miami', 'Sentosa', 'Marina Bay', 'Lahore', 'Aswan']
+Yazd
+         Rome    ['Lisbon', 'Washington D.C.', 'London', 'Chicago']
+         Kuala Lumpur    ['Jakarta', 'Bern', 'Vladivostok', 'Tromsø', 'Munich', 'Frankfurt', 'Christchurch']
+         Cancun          ['Stockholm', 'Bogota', 'Warsaw', 'Tehran', 'Shiraz', 'Lyon', 'Zurich', 'Bursa']
+         Marseille       ['Warsaw', 'Kyiv', 'Venice', 'New York City', 'Lyon']
+         Cusco   ['Hanoi', 'Cali', 'Christchurch']
+         Busan   ['Guangzhou', 'Chengdu', 'Christchurch']
+         Frankfurt       ['Beijing', 'Helsinki', 'Kuala Lumpur', 'London', 'Guangzhou']
+         Alexandria      ['Madrid', 'Singapore', 'Manila', 'Washington D.C.', 'Guangzhou']
+Tours:
+Tehran -> Cancun -> Yazd
+Yazd -> Cancun -> Shiraz
+Shiraz -> Lima -> Isfahan
+Isfahan -> Medellin -> Mashhad
+Mashhad -> Madrid -> Tabriz
+
+Best Tour:
+Tehran -> Cancun -> Yazd -> Shiraz
+

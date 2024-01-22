@@ -1,0 +1,43 @@
+Input:
+I'm seeking an exhilarating adventure in the cold, majestic mountains. My ideal journey involves trekking through crisp, snowy landscapes, where the air is fresh and the views are breathtaking. As an adventurer at heart, I long to conquer challenging mountain trails, camp under the starry sky, and wake up to the serene beauty of frost-covered peaks. This cold mountain adventure promises to be a thrilling escape from the everyday.
+
+1st query:
+['Kathmandu', 'Oslo', 'Bern']
+
+Graphs:
+Kathmandu
+	 Lisbon 	 ['Rome', 'Stockholm', 'Tabriz']
+	 Paris 	 ['Moscow', 'Helsinki', 'Lahore']
+	 London 	 ['Rome', 'Dhaka', 'Milan', 'Miami', 'Lahore', 'Frankfurt', 'Christchurch']
+	 Bern 	 ['Bangkok', 'Nairobi', 'Kuala Lumpur', 'Copenhagen', 'Islamabad']
+	 Los Angeles 	 ['Canberra', 'Oslo', 'Dhaka', "Xi'an"]
+	 Lahore 	 ['Tokyo', 'Mexico City', 'Berlin', 'Paris', 'Amsterdam', 'London', 'Rotorua']
+	 Munich 	 ['Ottawa', 'Helsinki', 'Manila', 'Brussels', 'Kuala Lumpur', 'Incheon']
+	 Christchurch 	 ['Kuala Lumpur', 'Amsterdam', 'Washington D.C.', 'London', 'Cusco', 'Arequipa', 'Busan']
+Oslo
+	 Cairo 	 ['Brasilia', 'Amsterdam', 'Vienna', 'Zagreb', "Xi'an", 'Cali', 'Aswan']
+	 Helsinki 	 ['Paris', 'Prague', 'Manila', 'Seoul', 'Mashhad', 'Munich', 'Frankfurt']
+	 Prague 	 ['Helsinki', 'Seoul', 'Shanghai', 'Queenstown']
+	 Vienna 	 ['Cairo', 'Dhaka', 'Bratislava', 'Venice', 'Vladivostok', "Xi'an", 'Geneva', 'Luxor']
+	 Los Angeles 	 ['Canberra', 'Kathmandu', 'Dhaka', "Xi'an"]
+	 Shanghai 	 ['Canberra', 'Beijing', 'Prague', 'Saint Petersburg', 'Karachi']
+	 Tromsø 	 ['New Delhi', 'Jakarta', 'Kuala Lumpur', 'Mashhad', 'Chengdu']
+Bern
+	 Bangkok 	 ['Washington D.C.', 'Jerusalem', 'Medellin']
+	 Kathmandu 	 ['Lisbon', 'Paris', 'London', 'Los Angeles', 'Lahore', 'Munich', 'Christchurch']
+	 Nairobi 	 ['Warsaw', 'Milan', 'Marina Bay', 'Izmir']
+	 Kuala Lumpur 	 ['Jakarta', 'Vladivostok', 'Yazd', 'Tromsø', 'Munich', 'Frankfurt', 'Christchurch']
+	 Copenhagen 	 ['Lima', 'Chicago']
+	 Islamabad 	 ['Madrid', 'Athens', 'Brussels', 'Kyiv', 'Venice', 'Florence', 'Rotorua']
+
+Tours:
+Kathmandu -> Bern
+Kathmandu -> Bern -> Kuala Lumpur
+Oslo -> Tromsø 
+Oslo -> Tromsø -> Kuala Lumpur
+
+Best Tour:
+Kathmandu -> Bern -> Kuala Lumpur -> Tromsø -> Oslo
+
+
+
